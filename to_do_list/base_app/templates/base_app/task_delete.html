@@ -1,0 +1,20 @@
+{% extends 'base_app/base.html' %}
+
+{% block content %}
+{% if task.user == request.user %}
+<div class="greetings"><div class="head_text">{{ task }}</div></div>
+<form method="post">
+    {% csrf_token %}
+    <div class="text-block high-attention">Are you sure you want to delete this task?</div>
+    <div class="nav_buttons">
+        <a href="{% url 'tasks' %}" class="task_processing">Return</a>
+        <input type="submit" class="task_processing" value="Delete">
+    </div>
+</form>
+{% else %}
+<div class="denied">No permissions</div>
+<div class="nav_buttons">
+        <a href="{% url 'tasks' %}" class="task_processing">Return</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base_app/base.html' %}
+
+{% block content %}
+<div class="greetings">
+    <div class="buttons">
+         <div>Hello, {{ request.user }}!</div>
+        <div class="button"><a href="{% url 'logout' %}">logout</a></div>
+    </div>
+</div>
+<div class="head_text">My To Do list ({{ count }})</div>
+<div class="interaction">
+    <form method="get">
+        <a href="{% url 'task_create' %}"><i class="fa-solid fa-circle-plus with-padding"></i></a>
+        <input type="text" id="searching" name="search-field" placeholder="Enter something to serch"
+               value="{{ search_data }}">
+        <button type="submit" class="non-showing"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button onclick="document.getElementById('searching').value = ''" class="non-showing">
+            <i class="fa-sharp fa-solid fa-eraser"></i>
+        </button>
+    </form>
+</div>
+<div class="tasks">
+    <table>
+    {% for task in tasks %}
+    <tr>
+        <td>{% if task.done %}
+            <i class="fa-sharp fa-solid fa-circle-check checking"></i> <span class="done">{{ task.title }}</span>
+            {% else %}
+            <i class="fa-sharp fa-solid fa-circle checking"></i> {{ task.title }}
+            {% endif %}
+        </td>
+        <td class="editing"><a href="{% url 'task_update' task.pk %}"><i class="fa-solid fa-pen"></i></a></td>
+        <td class="editing"><a href="{% url 'task_delete' task.pk %}"><i class="fa-solid fa-delete-left"></i></a></td>
+    </tr>
+    {% empty %}
+    <h3>No items in list</h3>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

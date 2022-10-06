@@ -1,0 +1,16 @@
+{% extends 'base_app/base.html' %}
+
+{% block content %}
+<div class="greetings"><div class="head_text">Register</div></div>
+<div class="text-block">
+    <form method="post">
+        {% csrf_token %}
+        {% for f in form %}
+        <label for="{{ f.id_for_label }}">{{ f.label }}</label>
+        <div class="form_element register">{{f}}</div>
+        {% endfor %}
+        <input type="submit" class="register" value="Register">
+    </form>
+</div>
+<div class="bottom_block"><span>Already have an account? <a href="{% url 'login' %}">Login</a></span></div>
+{% endblock %}
