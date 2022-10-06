@@ -33,7 +33,7 @@
         <td class="editing"><a href="{% url 'task_delete' task.pk %}"><i class="fa-solid fa-delete-left"></i></a></td>
     </tr>
     {% empty %}
-    <h3>No items in list</h3>
+    <div class="no_items"><span>No items in list</span></div>
     {% endfor %}
 </table>
 </div>
