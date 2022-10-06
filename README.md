@@ -14,6 +14,15 @@ To do list is a Python Django application that
 ```bash
 git clone https://github.com/kttel/todolist.git
 ```
+- add new virtual environment in project directory and install all neccessary libraries from requirements.txt
+```bash
+cd todolist
+
+python -m venv venv
+
+pip install -r requirements.txt
+```
+- go to the to_do_list and create file .env with your SECRET_KEY constant
 - in project run this commands to work with database
 ```bash
 python manage.py makemigrations
@@ -26,7 +35,7 @@ python manage.py createsuperuser
 ```
 ## Usage
 
-- in the directory with manage.py file run rhis command
+- in the directory with manage.py file run this command
 ```
 python manage.py runserver
 ```
